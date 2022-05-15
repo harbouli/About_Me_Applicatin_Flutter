@@ -5,7 +5,13 @@ void main() => runApp(MaterialApp(
       home: MyApp(),
     ));
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String language = 'Flutter';
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
@@ -32,11 +38,16 @@ class MyApp extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const CircleAvatar(
-                radius: 40.0,
-                backgroundImage: AssetImage('assets/images/Pic.jpg'),
+              const Center(
+                child: CircleAvatar(
+                  radius: 50.0,
+                  backgroundImage: AssetImage('assets/images/Pic.jpg'),
+                ),
               ),
-              const SizedBox(height: 30),
+              const Divider(
+                height: 50,
+                color: Colors.grey,
+              ),
               const Text(
                 'Name:',
                 style: TextStyle(
@@ -70,9 +81,9 @@ class MyApp extends StatelessWidget {
               const SizedBox(
                 height: 5.0,
               ),
-              const Text(
-                'Flutter',
-                style: TextStyle(
+              Text(
+                language,
+                style: const TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Euclid Circular B',
@@ -105,6 +116,17 @@ class MyApp extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              ElevatedButton.icon(
+                  onPressed: ((() => setState(() {
+                        language = 'EN';
+                      }))),
+                  icon: const Icon(
+                    Icons.verified,
+                  ),
+                  label: const Text('Next Step'))
             ]),
       ),
     ));
