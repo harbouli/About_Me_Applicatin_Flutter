@@ -11,7 +11,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String language = 'Flutter';
+  List language = [
+    'Flutter',
+    'English',
+    'Jave',
+    'Germany',
+    'BootSpring',
+  ];
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
@@ -82,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                 height: 5.0,
               ),
               Text(
-                language,
+                language[index],
                 style: const TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.w500,
@@ -121,7 +128,11 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton.icon(
                   onPressed: ((() => setState(() {
-                        language = 'EN';
+                        if (index >= 4) {
+                          index = 0;
+                        } else {
+                          index += 1;
+                        }
                       }))),
                   icon: const Icon(
                     Icons.verified,
