@@ -11,13 +11,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List language = [
+  List<String> language = [
     'Flutter',
     'English',
     'Jave',
     'Germany',
     'BootSpring',
+    'Larvel'
   ];
+
   int index = 0;
   @override
   Widget build(BuildContext context) {
@@ -127,15 +129,19 @@ class _MyAppState extends State<MyApp> {
                 height: 30.0,
               ),
               ElevatedButton.icon(
-                  onPressed: ((() => setState(() {
-                        if (index >= 4) {
-                          index = 0;
-                        } else {
-                          index += 1;
-                        }
-                      }))),
+                  onPressed: () {
+                    int num = language.length;
+
+                    setState(() {
+                      if (index >= num - 1) {
+                        index = 0;
+                      } else {
+                        index += 1;
+                      }
+                    });
+                  },
                   icon: const Icon(
-                    Icons.verified,
+                    Icons.verified_user_rounded,
                   ),
                   label: const Text('Next Step'))
             ]),
